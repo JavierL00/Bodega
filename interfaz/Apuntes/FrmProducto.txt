@@ -1,0 +1,154 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using CapaEntidades;
+using CapaNegocios;
+
+namespace CapaPresentación
+{
+    public partial class FrmProducto : Form
+    {
+
+        private bool Editar = false;
+        readonly E_Producto ObjEntidad = new E_Producto();
+        readonly N_Producto ObjNegocio = new N_Producto();
+
+        public FrmProducto()
+        {
+            InitializeComponent();
+        }
+
+        private void MensajeConfirmacion(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Valentina Market", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void MensajeError(string Mensaje)
+        {
+            MessageBox.Show(Mensaje, "Valentina Market", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void LimpiarCajas()
+        {
+            Editar = false;
+            Txt_Codigo.Text = "";
+            Txt_Area.Text = "";
+            Txt_Familia.Text = "";
+            Txt_Marca.Text = "";
+            Txt_Descripcion.Text = "";
+            Txt_Presentacion.Text = "";
+            Txt_Tamaño.Text = "";
+            Txt_Cantidad.Text = "";
+            Txt_P_Compra.Text = "";
+            Txt_P_Venta.Text = "";
+            Txt_Codigo.Focus();
+        }
+
+        private void Pb_Cerrar_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        private void Btn_Guardar_Click(object sender, EventArgs e)
+        {
+            if (Editar == false)
+            {
+                try
+                {
+                    ObjEntidad.Codigo = Txt_Codigo.Text.ToUpper();
+                    ObjEntidad.Area = Convert.ToInt32(Txt_Area.Text);
+                    ObjEntidad.Familia = Convert.ToInt32(Txt_Familia.Text);
+                    ObjEntidad.Marca = Txt_Marca.Text.ToUpper();
+                    ObjEntidad.Descripcion = Txt_Descripcion.Text.ToUpper();
+                    ObjEntidad.Presentacion = Txt_Presentacion.Text.ToUpper();
+                    ObjEntidad.Tamaño = Txt_Tamaño.Text.ToUpper();
+                    ObjEntidad.Cantidad = Convert.ToInt32(Txt_Cantidad.Text);
+                    ObjEntidad.P_Compra = Convert.ToDecimal(Txt_P_Compra.Text);
+                    ObjEntidad.P_Venta = Convert.ToDecimal(Txt_P_Venta.Text);
+
+                    ObjNegocio.InsertarRegistro(ObjEntidad);
+
+                    MensajeConfirmacion("Se insertó correctamente");
+                }
+                catch (Exception)
+                {
+                    MensajeError("No se pudo insertar el registro");
+                }
+            }
+            if (Editar == true)
+            {
+                try
+                {
+                    ObjEntidad.Codigo = Txt_Codigo.Text.ToUpper();
+                    ObjEntidad.Area = Convert.ToInt32(Txt_Area.Text);
+                    ObjEntidad.Familia = Convert.ToInt32(Txt_Familia.Text);
+                    ObjEntidad.Marca = Txt_Marca.Text.ToUpper();
+                    ObjEntidad.Descripcion = Txt_Descripcion.Text.ToUpper();
+                    ObjEntidad.Presentacion = Txt_Presentacion.Text.ToUpper();
+                    ObjEntidad.Tamaño = Txt_Tamaño.Text.ToUpper();
+                    ObjEntidad.Cantidad = Convert.ToInt32(Txt_Cantidad.Text);
+                    ObjEntidad.P_Compra = Convert.ToDecimal(Txt_P_Compra.Text);
+                    ObjEntidad.P_Venta = Convert.ToDecimal(Txt_P_Venta.Text);
+
+                    ObjNegocio.EditarRegistro(ObjEntidad);
+
+                    MensajeConfirmacion("Se modificó correctamente");
+                }
+                catch (Exception)
+                {
+                    MensajeError("No se pudo modificar el registro");
+                }
+            }
+        }
+
+        private void Btn_Editar_Click(object sender, EventArgs e)
+        {
+            if (Data_listado.SelectedRows.Count > 0)
+            {
+                Editar = true;
+                Txt_Codigo.Text = Data_listado.CurrentRow.Cells[0].Value.ToString();
+                Txt_Area.Text = Data_listado.CurrentRow.Cells[1].Value.ToString();
+                Txt_Familia.Text = Data_listado.CurrentRow.Cells[2].Value.ToString();
+                Txt_Marca.Text = Data_listado.CurrentRow.Cells[3].Value.ToString();
+                Txt_Descripcion.Text = Data_listado.CurrentRow.Cells[4].Value.ToString();
+                Txt_Presentacion.Text = Data_listado.CurrentRow.Cells[5].Value.ToString();
+                Txt_Tamaño.Text = Data_listado.CurrentRow.Cells[6].Value.ToString();
+                Txt_Cantidad.Text = Data_listado.CurrentRow.Cells[7].Value.ToString();
+                Txt_P_Compra.Text = Data_listado.CurrentRow.Cells[8].Value.ToString();
+                Txt_P_Venta.Text = Data_listado.CurrentRow.Cells[9].Value.ToString();               
+            }
+            else
+            {
+                MensajeError("Seleccione una fila primero");
+            }
+        }
+
+        private void Btn_Eliminar_Click(object sender, EventArgs e)
+        {
+            if (Data_listado.SelectedRows.Count > 0)
+            {
+                DialogResult opcion;
+                opcion = MessageBox.Show("¿Desea eliminar este registro?", "Valentina Market", MessageBoxButtons.OKCancel, MessageBoxIcon.Question);
+                if (opcion == DialogResult.OK)
+                {
+                    ObjEntidad.Codigo = Data_listado.CurrentRow.Cells[0].Value.ToString();
+                    ObjNegocio.EliminarRegistro(ObjEntidad);
+
+                    MensajeConfirmacion("Se eliminó correctamente el registro.");
+
+                    MostrarRegistro();
+                }
+            }
+            else
+            {
+                MensajeError("Seleccione primero una fila a eliminar");
+            }
+        }
+    }
+}

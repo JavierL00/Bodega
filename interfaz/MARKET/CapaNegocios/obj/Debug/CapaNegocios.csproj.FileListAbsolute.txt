@@ -1,0 +1,11 @@
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\bin\Debug\CapaNegocios.dll
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\bin\Debug\CapaNegocios.pdb
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\bin\Debug\CapaDatos.dll
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\bin\Debug\CapaEntidades.dll
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\bin\Debug\CapaDatos.pdb
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\bin\Debug\CapaEntidades.pdb
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\obj\Debug\CapaNegocios.csprojAssemblyReference.cache
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\obj\Debug\CapaNegocios.csproj.CoreCompileInputs.cache
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\obj\Debug\CapaNegocios.csproj.CopyComplete
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\obj\Debug\CapaNegocios.dll
+C:\Users\javie\Desktop\interfaz\MARKET\CapaNegocios\obj\Debug\CapaNegocios.pdb

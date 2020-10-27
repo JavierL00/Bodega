@@ -1,0 +1,6 @@
+C:\Users\javie\Desktop\interfaz\MARKET\CapaEntidades\bin\Debug\CapaEntidades.dll
+C:\Users\javie\Desktop\interfaz\MARKET\CapaEntidades\bin\Debug\CapaEntidades.pdb
+C:\Users\javie\Desktop\interfaz\MARKET\CapaEntidades\obj\Debug\CapaEntidades.csprojAssemblyReference.cache
+C:\Users\javie\Desktop\interfaz\MARKET\CapaEntidades\obj\Debug\CapaEntidades.csproj.CoreCompileInputs.cache
+C:\Users\javie\Desktop\interfaz\MARKET\CapaEntidades\obj\Debug\CapaEntidades.dll
+C:\Users\javie\Desktop\interfaz\MARKET\CapaEntidades\obj\Debug\CapaEntidades.pdb
